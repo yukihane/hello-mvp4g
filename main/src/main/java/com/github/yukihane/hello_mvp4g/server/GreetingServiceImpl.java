@@ -2,6 +2,7 @@ package com.github.yukihane.hello_mvp4g.server;
 
 import com.github.yukihane.hello_mvp4g.client.GreetingService;
 import com.github.yukihane.hello_mvp4g.shared.FieldVerifier;
+import com.github.yukihane.hello_mvp4g.shared.Information;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
@@ -10,8 +11,9 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @SuppressWarnings("serial")
 public class GreetingServiceImpl extends RemoteServiceServlet implements GreetingService {
 
-    public String greetServer(String input) throws IllegalArgumentException {
+    public String greetServer(Information info) throws IllegalArgumentException {
         // Verify that the input is valid.
+        final String input = info.getName();
         if (!FieldVerifier.isValidName(input)) {
             // If the input is not valid, throw an IllegalArgumentException back
             // to
@@ -24,11 +26,11 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements Greetin
 
         // Escape data from the client to avoid cross-site script
         // vulnerabilities.
-        input = escapeHtml(input);
+        final String name = escapeHtml(input);
         userAgent = escapeHtml(userAgent);
 
-        return "Hello, " + input + "!<br><br>I am running " + serverInfo + ".<br><br>It looks like you are using:<br>"
-                + userAgent;
+        return "Good " + info.getTiming() + ", " + name + "!<br><br>I am running " + serverInfo
+                + ".<br><br>It looks like you are using:<br>" + userAgent;
     }
 
     /**

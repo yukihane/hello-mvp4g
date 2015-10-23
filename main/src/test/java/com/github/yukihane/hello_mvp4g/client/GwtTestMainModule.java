@@ -1,6 +1,8 @@
 package com.github.yukihane.hello_mvp4g.client;
 
 import com.github.yukihane.hello_mvp4g.shared.FieldVerifier;
+import com.github.yukihane.hello_mvp4g.shared.Information;
+import com.github.yukihane.hello_mvp4g.shared.Timing;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.junit.client.GWTTestCase;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -54,7 +56,10 @@ public class GwtTestMainModule extends GWTTestCase {
         delayTestFinish(10000);
 
         // Send a request to the server.
-        greetingService.greetServer("GWT User", new AsyncCallback<String>() {
+        Information info = new Information();
+        info.setName("GWT User");
+        info.setTiming(Timing.MORNING);
+        greetingService.greetServer(info, new AsyncCallback<String>() {
             public void onFailure(Throwable caught) {
                 // The request resulted in an unexpected error.
                 fail("Request failure: " + caught.getMessage());

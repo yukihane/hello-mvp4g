@@ -1,6 +1,8 @@
 package com.github.yukihane.hello_mvp4g.client;
 
 import com.github.yukihane.hello_mvp4g.shared.FieldVerifier;
+import com.github.yukihane.hello_mvp4g.shared.Information;
+import com.github.yukihane.hello_mvp4g.shared.Timing;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -121,7 +123,10 @@ public class MainModule implements EntryPoint {
                 sendButton.setEnabled(false);
                 textToServerLabel.setText(textToServer);
                 serverResponseLabel.setText("");
-                greetingService.greetServer(textToServer, new AsyncCallback<String>() {
+                Information info = new Information();
+                info.setName(textToServer);
+                info.setTiming(Timing.MORNING);
+                greetingService.greetServer(info, new AsyncCallback<String>() {
                     public void onFailure(Throwable caught) {
                         // Show the RPC error message to the user
                         dialogBox.setText("Remote Procedure Call - Failure");
