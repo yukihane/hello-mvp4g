@@ -30,6 +30,13 @@
       <version>${gwt.version}</version>
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>com.googlecode.mvp4g</groupId>
+      <artifactId>mvp4g</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
