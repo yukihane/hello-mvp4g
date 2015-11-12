@@ -7,9 +7,10 @@
 This sequence is GWT version 2.5.1 specific.
 
 (see also: http://stackoverflow.com/a/18333050/4506703 )
+1. ~cd main~
 1. Execute: ~mvn clean process-classes gwt:run-codeserver~ .
 1. Open URL: http://localhost:9876/ .
-1. Register "Dev Mode On" and "Dev Mode off".
+1. Register 2 bookmarklets, "Dev Mode On" and "Dev Mode off".
 1. Open link to http://localhost:9876/MainModule/ .
 1. Download *.gwt.rpc and move it to target/main-0.0.1-SNAPSHOT/MainModule/ .
 1. Execute on another terminal: ~mvn gwt:run~ .
@@ -19,10 +20,13 @@ This sequence is GWT version 2.5.1 specific.
 * MVP-pattern implementation using MVP4G
 
 Webアプリにおいてモデルの大半はサーバサイドに存在すべきで、gwtで言えばこれはサービス呼び出しに該当します。
+
 そのため今回のような単純なアプリだとモデルがほぼ無いものになるのはやむを得ませんが、例として十分とは言えないかも。
+
 (実際のアプリケーションでは、サービス呼び出し(リモートコール)の事前チェックなども多いはずで、そういうものがモデルになる。)
 
 * Unit Testing using vanilla JUnit(, without GWTTestCase)
 
 MVPパターンでロジックをビュー実装から分離することで, GWTTestCaseを使用せず素のJUnitでテストを行えるようにします。
+
 スローテストを抑止する効果が期待できます。
