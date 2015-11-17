@@ -108,7 +108,7 @@ public class MainView extends ResizeComposite implements IMainView {
              * Fired when the user clicks on the sendButton.
              */
             public void onClick(ClickEvent event) {
-                getPresenter().sendNameToServer();
+                getPresenter().onSendButtonClick();
             }
 
             /**
@@ -116,7 +116,7 @@ public class MainView extends ResizeComposite implements IMainView {
              */
             public void onKeyUp(KeyUpEvent event) {
                 if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-                    getPresenter().sendNameToServer();
+                    getPresenter().onSendButtonClick();
                 }
             }
         }

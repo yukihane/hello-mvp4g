@@ -28,7 +28,8 @@ public class MainPresenter extends BasePresenter<IMainView, MainEventBus>impleme
     /**
      * Send the name from the nameField to the server and wait for a response.
      */
-    public void sendNameToServer() {
+    @Override
+    public void onSendButtonClick() {
         // First, we validate the input.
         getView().clearError();
         String textToServer = getView().getTextToServer();

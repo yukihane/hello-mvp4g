@@ -34,7 +34,7 @@ public class MainPresenterTest {
     @Test
     public void サーバへ情報を送信する_正常ケース() {
         when(view.getTextToServer()).thenReturn("abcde");
-        presenter.sendNameToServer();
+        presenter.onSendButtonClick();
 
         verify(service).greetServer(Mockito.<Information> any(), Mockito.<AsyncCallback<String>> any());
     }
@@ -42,7 +42,7 @@ public class MainPresenterTest {
     @Test
     public void サーバへ情報を送信する_空文字列() {
         when(view.getTextToServer()).thenReturn("");
-        presenter.sendNameToServer();
+        presenter.onSendButtonClick();
 
         // エラー出力される
         verify(view).printError(anyString());
@@ -53,7 +53,7 @@ public class MainPresenterTest {
     @Test
     public void サーバへ情報を送信する_文字数不足() {
         when(view.getTextToServer()).thenReturn("abc");
-        presenter.sendNameToServer();
+        presenter.onSendButtonClick();
 
         // エラー出力される
         verify(view).printError(anyString());
